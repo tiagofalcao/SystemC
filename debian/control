@@ -1,0 +1,33 @@
+Source: systemc
+Priority: optional
+Maintainer: ArchC <archc@archc.org>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev
+Standards-Version: 3.9.4
+Section: libs
+Homepage: http://accellera.org/downloads/standards/systemc
+Vcs-Git: https://github.com/ArchC/SystemC.git
+Vcs-Browser: https://github.com/ArchC/SystemC
+
+Package: libsystemc
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: SystemC (TM)
+ SystemC is a HDL based on a C++ class library intended for
+ simulations using standard C++ tools.
+
+Package: libsystemc-dev
+Section: libdevel
+Architecture: any
+Depends: libsystemc (= ${binary:Version})
+Description: SystemC (TM)
+ SystemC is a HDL based on a C++ class library intended for
+ simulations using standard C++ tools.
+
+Package: libsystemc-doc
+Section: doc
+Architecture: all
+Recommends: libsystemc-dev (= ${binary:Version})
+Description: SystemC (TM)
+ SystemC is a HDL based on a C++ class library intended for
+ simulations using standard C++ tools.

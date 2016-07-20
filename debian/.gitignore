@@ -1,0 +1,10 @@
+*.log
+tmp
+*.after
+*.before
+*.substvars
+*.debhelper
+libsystemc-dev
+libsystemc-doc
+libsystemc
+files
