@@ -93,3 +93,29 @@ deployment:
 after_deployment:
 
 
+before_deploy:
+  - ${TRAVIS_BUILD_DIR}/.travis/package.sh
+
+deploy:
+  - provider: bintray
+    user: tiagofalcao
+    key:
+      secure: "cueydyXbTEtLyhWKtb+gmpIJZyPDUdGzN7l2Ikxih0GwVuaC/xPZI4FsrI6LjjTyTIERCUPwxSJDgZaUrAQwGhpH+VjMCNTKry/vvSA4ztbJQYR/lxr5gNsiuJJrWgfm9l8l+H/FlvB3am+/dN2Q36OSH2Z4mL2MRONkaIcLGDs="
+    file: ${TRAVIS_BUILD_DIR}/.travis/bintray.json
+    skip_cleanup: true
+    on:
+      repo: ArchC/SystemC
+      branch: master
+      condition: -f ${TRAVIS_BUILD_DIR}/.travis/bintray.json
+  - provider: releases
+    skip_cleanup: true
+    api_key:
+      secure: QU7LCRSnW0Xgy66EwZ0ja1dFwoHrQ2rpzg4oZVka6ynYb26mtF2MaigEkS/2gmxgYHGnX7rplPtPevZJ1EnqInp7ICEDTRSVx7UHZvNlaC0R8rCNLE5iPC4EeDedpvVlIhD7r3qN60cdMKfWJHDW0V38s/uXE36nMCoH8tUsmUc=
+    file: "$(cat ${TRAVIS_BUILD_DIR}/.travis/github-releases.txt)"
+    on:
+      repo: ArchC/SystemC
+      tags: true
+      condition: -f "${TRAVIS_BUILD_DIR}/.travis/github-releases.txt"
+
+after_deploy:
+
